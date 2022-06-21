@@ -1,0 +1,2 @@
+#Part 0
+In this part, we familiarize ourselves with the introduction of the course structure. After that we begin an overview of the basics of web developement and talk about the advances in it during the decades.
