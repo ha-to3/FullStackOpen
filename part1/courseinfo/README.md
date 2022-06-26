@@ -1,2 +1,3 @@
-# Getting Started with Create React App
+# Courseinfo
+Created a course info
  
