@@ -1,3 +1,3 @@
 # Courseinfo
-Created a course info
+Created a course info for three different courses
  
