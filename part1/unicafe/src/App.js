@@ -8,22 +8,22 @@ const Button = ({handleClick,text}) => {
 
   )
 }
+
 const Statistics = ({good,neutral,bad}) => {
   const all = good+neutral+bad 
   const avg = (good+bad)/all
   const pos = (good*100)/(all)
-
   return (
     <div>
       {all===0 ? ('No Feedback given') : (
         <table>
           <tbody>
-            <StatisticLine text="good" value ={good} />
-            <StatisticLine text="neutral" value ={neutral} />
-            <StatisticLine text="bad" value ={bad} />
-            <StatisticLine text="all" value ={all} />
-            <StatisticLine text="average" value ={avg} />
-            <StatisticLine text="positive" value ={pos} />
+            <StatisticLine text="good" value = {good} />
+            <StatisticLine text="neutral" value = {neutral} />
+            <StatisticLine text="bad" value = {bad} />
+            <StatisticLine text="all" value = {all} />
+            <StatisticLine text="average" value = {avg} />
+            <StatisticLine text="positive" value = {pos} />
           </tbody>
         </table>
         )
@@ -62,9 +62,9 @@ const App = () => {
   return (
     <div>
       <Heading text='give feedback'/>
-      <Button handleClick={setToGood} text='Good'/>
-      <Button handleClick={setToNeutral} text='Neutral'/>
-      <Button handleClick={setToBad} text='Bad'/>
+      <Button handleClick={setToGood} text='good'/>
+      <Button handleClick={setToNeutral} text='neutral'/>
+      <Button handleClick={setToBad} text='bad'/>
       <Heading text='statistics'/>
       <Statistics good={good} neutral={neutral} bad={bad}/>
     </div>
