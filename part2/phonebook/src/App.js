@@ -1,9 +1,7 @@
 import { useState } from 'react'
-
+import PersonList from './Components/PersonList'
 const App = () => {
-  const [persons, setPersons] = useState([
-    { name: 'Arto Hellas' }
-  ]) 
+  const [persons, setPersons] = useState([]) 
   const [newName, setNewName] = useState('')
 
   const addPerson = (event) => {
@@ -11,8 +9,16 @@ const App = () => {
     const personObj = {
       name: newName
     }
-    setPersons(persons.concat(personObj))
-    setNewName('')
+    if (personObj.name.length < 1 ){
+      alert(`Fields are missing`)
+    }
+    else if (persons.find(person => person.name.toLowerCase() === personObj.name.toLowerCase())){
+        alert(`${newName} is already added to phonebook`)
+    }
+    else {
+       setPersons(persons.concat(personObj))
+       setNewName('')
+    }
   }
 
   const handlePersonChange= (event) => {
@@ -34,7 +40,7 @@ const App = () => {
         </div>
       </form>
       <h2>Numbers</h2>
-      {persons.map(person => <p key={person.id}>{person.name}</p>)}
+        {persons.map(person => <PersonList key={person.name} person={person}/>)}
     </div>
   )
 }
