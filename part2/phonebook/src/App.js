@@ -1,9 +1,12 @@
 import { useState } from 'react'
-import PersonList from './Components/PersonList'
 import Header from './Components/Header'
+import Form from './Components/Form'
+import Filter from './Components/Filter'
+import FilterList from './Components/FilterList'
 
 const App = () => {
-  const [persons, setPersons] = useState([ { name: 'Arto Hellas', number: '040-123456'},
+  const [persons, setPersons] = useState([ 
+  { name: 'Arto Hellas', number: '040-123456'},
   { name: 'Ada Lovelace', number: '39-44-5323523'},
   { name: 'Dan Abramov', number: '12-43-234345' },
   { name: 'Mary Poppendieck', number: '39-23-6423122'}]) 
@@ -45,50 +48,20 @@ const App = () => {
     const lowerCase = e.target.value.toLowerCase();
     setInputText(lowerCase)
   }
-  
-  const filteredData = persons.filter((person) => {
-    if (inputText === ''){
-      return person
-    }
-    else {
-      return person.name.toLowerCase().match(inputText)
-    }
-  })
-
 
   return (
     <div>
       <Header header='Phonebook'/>
-      <p>filter shown with  
-        <input
-          onChange={handleSearchChange}
-        />
-      </p>
-      
+      <Filter handleSearchChange={handleSearchChange}/>
       <Header header='add a new'/>
-      <form onSubmit={addPerson}>
-        <div>
-          name: 
-          <input 
-            value={newName}
-            onChange={handlePersonChange}
-          />
-        </div>
-        <div>
-          number: 
-          <input 
-            value={newNumber}
-            onChange={handleNumberChange}
-          />
-        </div>
-        <div>
-          <button type="submit">add</button>
-        </div>
-      </form>
+      <Form 
+            onSubmit={addPerson} 
+            newName={newName} 
+            newNumber={newNumber} 
+            handlePersonChange={handlePersonChange} 
+            handleNumberChange={handleNumberChange}/>
       <Header header='Numbers'/>
-        {filteredData.map(person => 
-          <PersonList key={person.name} person={person}
-        />)}
+      <FilterList inputText={inputText} persons={persons}/>
     </div>
   )
 }
