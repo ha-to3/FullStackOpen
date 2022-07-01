@@ -45,6 +45,16 @@ const App = () => {
     const lowerCase = e.target.value.toLowerCase();
     setInputText(lowerCase)
   }
+  
+  const filteredData = persons.filter((person) => {
+    if (inputText === ''){
+      return person
+    }
+    else {
+      return person.name.toLowerCase().match(inputText)
+    }
+  })
+
 
   return (
     <div>
@@ -76,7 +86,7 @@ const App = () => {
         </div>
       </form>
       <Header header='Numbers'/>
-        {persons.map(person => 
+        {filteredData.map(person => 
           <PersonList key={person.name} person={person}
         />)}
     </div>
