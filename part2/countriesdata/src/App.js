@@ -17,10 +17,10 @@ function App() {
   const handleSearchChange = (e) => {
     const lowerCase = e.target.value.toLowerCase();
     setSearch(lowerCase)
+    console.log()
     if (search) {
-      console.log('searched')
-      const filteredData = () => countries.filter(country => country.name.common.toLowerCase().match(search))
-      console.log(filterCountries)
+      const filteredData = () => countries.filter(country => country.name.common.toLowerCase().match(lowerCase))
+      
       setFilterCountries(filteredData)
     }
   }
@@ -28,7 +28,13 @@ function App() {
   return (
     <div>
         <Search handleSearchChange={handleSearchChange}/>
-        {filterCountries.map(country => <p>{country.name.common}</p>)}
+        <div>
+          {filterCountries.length > 10 && 
+          <h2>too many countries</h2>} 
+          {filterCountries.length < 10 && 
+            filterCountries.map(country => <p key={country.name.common}>{country.name.common}</p>)
+          }
+        </div>
     </div>
   )
 }
