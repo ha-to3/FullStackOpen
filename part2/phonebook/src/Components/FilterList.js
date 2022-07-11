@@ -1,7 +1,7 @@
 import React from 'react'
 import PersonList from './PersonList'
 
-const FilterList = ({ inputText, persons, }) => {
+const FilterList = ({ inputText, persons }) => {
     const filteredData = persons.filter((person) => {
         if (inputText === ''){
           return person
@@ -15,7 +15,7 @@ const FilterList = ({ inputText, persons, }) => {
         {filteredData.map(person => 
             <PersonList key={person.name} person={person}
           />)}
-          </div>
+        </div>
     )
 }
 
