@@ -1,23 +1,29 @@
 import React from 'react'
+import SelectedCountry from './SelectedCountry'
 
 const Countries = ({ filterCountries }) => {
-    if (filterCountries.length >= 1 && filterCountries.length < 11) {
-        return (
-            <div>
-                {console.log('what',filterCountries.length)}
-                {filterCountries.map(country => <p key={country.name.common}>{country.name.common}</p>)}
-            </div>
-        )
+    const displayedCountries = ({filterCountries}) => {
+        if (filterCountries.length === 1) {
+            return (
+                <SelectedCountry selectedCountry={filterCountries[0]} />
+            )
+        }
+        else if (filterCountries.length > 10){
+            return (
+            <p>{console.log(filterCountries.length)} Too many matches, specify another filter</p>
+        )}
+       else {
+        return filterCountries.map(country => 
+        <div key={country.ccn3}>
+            <p>{country.name.common}</p>
+        </div>)
+       }
     }
-    else if (filterCountries.length > 11){
-        return (
-        <p>{console.log(filterCountries.length)} Too many matches, specify another filter</p>
-    )}
-    else {
-        return (
-            <p></p>
-        )
-    }
+    const countriesShown = displayedCountries({filterCountries})
+ return (
+    <div>
+        {countriesShown}
+    </div>
+ )
 }
-
 export default Countries
