@@ -29,7 +29,8 @@ function App() {
     <div>
         <Search handleSearchChange={handleSearchChange}/>
         <div>
-          <Countries filterCountries = {filterCountries} setFilterCountries={setFilterCountries}/>
+          {filterCountries.length>= 1 ? 
+          <Countries filterCountries={filterCountries} />: ''}
         </div>
     </div>
   )
