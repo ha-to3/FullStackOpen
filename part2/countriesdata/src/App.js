@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react'
 import axios from 'axios'
 import Search from './components/Search'
+import Countries from './components/Countries'
 
 function App() {
 
@@ -17,10 +18,9 @@ function App() {
   const handleSearchChange = (e) => {
     const lowerCase = e.target.value.toLowerCase();
     setSearch(lowerCase)
+    console.log()
     if (search) {
-      console.log('searched')
-      const filteredData = () => countries.filter(country => country.name.common.toLowerCase().match(search))
-      console.log(filterCountries)
+      const filteredData = () => countries.filter(country => country.name.common.toLowerCase().match(lowerCase))
       setFilterCountries(filteredData)
     }
   }
@@ -28,7 +28,9 @@ function App() {
   return (
     <div>
         <Search handleSearchChange={handleSearchChange}/>
-        {filterCountries.map(country => <p>{country.name.common}</p>)}
+        <div>
+          <Countries filterCountries = {filterCountries} setFilterCountries={setFilterCountries}/>
+        </div>
     </div>
   )
 }
