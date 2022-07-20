@@ -31,6 +31,10 @@ const SelectedCountry = ({ selectedCountry, setOneCountry }) => {
         <h4>languages</h4>
         <ul>{countryLanguage.map(language => <li key={language}>{language}</li>)}</ul>
         <img src={selectedCountry.flags.png} alt=''/>
+        <h1>Weather in {selectedCountry.capital}</h1>
+        <p>temperature {}</p>
+        <img src />
+        <p>wind </p>
         <br />
         <button onClick={()=>handleClick()}>back</button>
     </div>
